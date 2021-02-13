@@ -3,13 +3,16 @@ import React, { FormEvent, ChangeEvent } from 'react';
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography'
 import Input from '@material-ui/core/Input'
-
-import { aOrAn } from './util'
+import Button from '@material-ui/core/Button'
 
 class NameEntry extends React.Component<Props, State> {
 
   state = {
     word: ''
+  }
+
+  selectCategory = (category: string) => {
+
   }
 
   onSubmit = (evt: FormEvent<HTMLFormElement>) => {
@@ -29,7 +32,10 @@ class NameEntry extends React.Component<Props, State> {
 
       <div className={classes.main}>
         <Typography variant='h1' className={classes.header}>
-          {name} with {aOrAn(letter)} {letter} and the {letter} is for
+          Choose a category
+        </Typography>
+        <Typography variant='h1' className={classes.header}>
+          Or type your own
         </Typography>
         <form onSubmit={this.onSubmit}>
           <Input 
