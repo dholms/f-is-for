@@ -6,8 +6,6 @@ import LetterSelect from './LetterSelect'
 import WordSelect from './WordSelect'
 import Display from './Display'
 
-import { findImage } from './unsplash'
-
 class App extends React.Component<Props, State> {
 
   state: State = {
@@ -26,13 +24,11 @@ class App extends React.Component<Props, State> {
     this.setState({ index })
   }
 
-  onWordSelect = async (word: string) => {
-    const img = await findImage(word)
+  onWordSelect = async (word: string, img: string) => {
     this.setState({ img, word })
   }
 
   render() {
-    console.log(this.state)
     if(this.state.name !== null) {
       if(this.state.index !== null) {
         if(this.state.word !== null && this.state.img !== null) {
