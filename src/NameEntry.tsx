@@ -12,8 +12,10 @@ class NameEntry extends React.Component<Props, State> {
 
   onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
-    if(this.state.name.length > 0){
-      this.props.onSubmit(this.state.name)
+    const name = this.state.name
+    if(name.length > 0) {
+      const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1)
+      this.props.onSubmit(nameCapitalized)
     }
   }
 

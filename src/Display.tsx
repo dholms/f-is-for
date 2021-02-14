@@ -5,7 +5,16 @@ import Typography from '@material-ui/core/Typography'
 
 import { aOrAn } from './util'
 
+import qs from 'query-string'
+
 class Display extends React.Component<Props, State> {
+
+  componentDidMount() {
+    const { name, index, word, img } = this.props
+    const str = '?' + qs.stringify({name, index, word, img})
+    window.history.pushState({}, '', str)
+  }
+
   render() {
     const { name, index, word, img, classes } = this.props
     const letter = name[index].toUpperCase()

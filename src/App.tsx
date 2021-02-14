@@ -6,6 +6,10 @@ import LetterSelect from './LetterSelect'
 import WordSelect from './WordSelect'
 import Display from './Display'
 
+import qs from 'query-string'
+
+import { isString } from './util'
+
 class App extends React.Component<Props, State> {
 
   state: State = {
@@ -15,12 +19,21 @@ class App extends React.Component<Props, State> {
     img: null,
   }
 
+  componentDidMount() {
+    console.log(window.location)
+    const params = qs.parse(window.location.search)
+    if(isString(params.name) && isString(params.index) && isString(params.word) && isString(params.img)) {
+      const { name, word, img } = params
+      const index = parseInt(params.index)
+      this.setState({ name, index, word, img })
+    }
+  }
+
   onNameEnter = (name: string) => {
     this.setState({ name })
   }
 
   onLetterSelect = (index: number) => {
-    console.log(index)
     this.setState({ index })
   }
 
